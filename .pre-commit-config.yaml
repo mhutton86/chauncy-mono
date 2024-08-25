@@ -24,7 +24,7 @@ repos:
       files: ^(automation|ci|code-scanning|deployments|pages)/.*\.(yaml|yml|json)$
       # TODO: Confirm regex matches intended directories and file types
 
-    # File conflict and size management hooks
+    # File conflict and size management hooks 
     - id: check-added-large-files
       # Prevents giant files from being committed
     - id: check-case-conflict
