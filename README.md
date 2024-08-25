@@ -14,3 +14,4 @@ This section captures todos as to avoid missing clean, and well-written, code pr
 * Add that we have tools set up and why
   * Pre-Commit framework (Deps: Python 3, Pip 3)
   * Generally, it'd be dope to do it in a automata way to have traceability between tools and dependencies, and to find opportunities for pruning tools that are done
+* Add overview of `.pre-commit-config.yaml`

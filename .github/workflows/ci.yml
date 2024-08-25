@@ -22,28 +22,6 @@ permissions:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    permissions:
-      # To report GitHub Actions status checks
-      statuses: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          # super-linter needs the full git history to get the
-          # list of files that changed across commits
-          fetch-depth: 0
-
-      - name: Super-linter
-        uses: super-linter/super-linter@v7.0.0 # x-release-please-version
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
   
   build:
     # The type of runner that the job will run on
@@ -54,6 +32,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      # TODO: replace with a build script call when it's available
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!

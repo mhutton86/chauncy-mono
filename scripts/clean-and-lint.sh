@@ -10,13 +10,12 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-
 # Change to the project root directory
 cd "$PROJECT_ROOT"
 
 # Run pre-commit on all files
 echo -e "${YELLOW}Running pre-commit hooks on all files...${NC}"
-if pre-commit run --all-files; then
+if pre-commit run --all-files --show-diff-on-failure --color always; then
     echo -e "${GREEN}Pre-commit hooks completed successfully.${NC}"
 else
     echo -e "${RED}Pre-commit hooks reported errors.${NC}"

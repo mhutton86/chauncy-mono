@@ -1,7 +1,37 @@
+# .pre-commit-config.yaml
+# This configuration file is used by the Pre-Commit framework to manage and maintain pre-commit hooks.
+# Pre-Commit hooks are scripts that run automatically before each commit to ensure code quality and check for errors.
+# This setup helps enforce coding standards and prevent common issues in code and other tracked files.
+
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.4.0
   hooks:
   - id: trailing-whitespace
-    # TODO fix to match target directories
-    files: (automation/|ci/|code-scanning/|deployments/|pages/).*(yaml|yml|json)$
+    # This regex targets specific directories and file extensions
+    files: ^(automation|ci|code-scanning|deployments|pages)/.*\.(yaml|yml|json)$
+  - id: check-added-large-files
+    # No specific type needed as this can apply to any large file
+  - id: check-case-conflict
+    # No specific type needed as this can apply to any files
+  - id: check-executables-have-shebangs
+    types: [python, bash, perl, script]  # You may adjust this based on the script types you use
+  - id: check-json
+    types: [json]
+  - id: check-merge-conflict
+    # This can potentially apply to any text file
+  - id: check-symlinks
+    # No specific type needed as it deals with symlink integrity
+  - id: destroyed-symlinks
+    # No specific type needed as it deals with symlink integrity
+  - id: check-toml
+    types: [toml]
+  - id: check-xml
+    types: [xml]
+  - id: check-yaml
+    args: [--allow-multiple-documents]
+    types: [yaml]
+  - id: detect-aws-credentials
+    # Typically applies to all files but can be limited to likely candidates like config files
+  - id: forbid-submodules
+    # Applies to git submodule config
