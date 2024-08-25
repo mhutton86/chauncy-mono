@@ -5,10 +5,16 @@ name: Lint
 on:
   push:
 
+# Default permissions. Start limited, but change access as needed for jobs.
+permissions:
+  contents: read
+  packages: read
+  statuses: read
+
 jobs:
 
   pre-commit:
-    name: pre-commit
+    name: Pre-Commit Checks
     runs-on: ubuntu-latest
 
     steps:
@@ -45,3 +51,5 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Disable YAML prettifier
+          VALIDATE_YAML_PRETTIER: false
