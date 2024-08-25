@@ -23,13 +23,13 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 ## Install the framework
 echo_yellow "Installing Pre-Commit framework..."
 sudo apt-get install -y \
-    pre-commit \  # Pre-Commit framework
-    shfmt         # shfmt: shell formatting
+  pre-commit \  # Pre-Commit framework
+shfmt           # shfmt: shell formatting
 
 ## Check if installation took
-if ! command -v pre-commit &> /dev/null; then
-    echo_red "Pre-Commit installation failed."
-    exit 1
+if ! command -v pre-commit &>/dev/null; then
+  echo_red "Pre-Commit installation failed."
+  exit 1
 fi
 
 ## Install Pre-Commit Git hooks
