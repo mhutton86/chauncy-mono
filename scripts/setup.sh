@@ -7,32 +7,34 @@
 # Installs:
 #   - Pre-Commit framework (deps: Python, pip)
 
-# Constants for color-coded output
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
+# Directories to simplify making script runnable from anywhere
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-echo -e "${GREEN}Starting setup of development dependencies...${NC}"
+# Source the common functions and constants
+source "${SCRIPT_DIR}/.common.sh"
+
+echo_green "Starting setup of development dependencies..."
 
 # Update and upgrade system packages
-echo -e "${YELLOW}Updating system packages...${NC}"
+echo_yellow "Updating system packages..."
 sudo apt-get update -y && sudo apt-get upgrade -y
 
 # Pre-Commit framework
 ## Install the framework
-echo -e "${YELLOW}Installing Pre-Commit framework...${NC}"
-sudo apt-get install -y pre-commit
+echo_yellow "Installing Pre-Commit framework..."
+sudo apt-get install -y \
+    pre-commit \  # Pre-Commit framework
+    shfmt         # shfmt: shell formatting
 
 ## Check if installation took
 if ! command -v pre-commit &> /dev/null; then
-    echo -e "${RED}Pre-Commit installation failed.${NC}"
+    echo_red "Pre-Commit installation failed."
     exit 1
 fi
 
-## Install Pre-Commit hooks
+## Install Pre-Commit Git hooks
 pre-commit install
 
-# Optional: Display next steps or information about configuration
-echo -e "${GREEN}Setup complete. You can now use Pre-Commit for managing Git hooks.${NC}"
-echo -e "${GREEN}Run 'pre-commit run --all-files' to check the entire codebase.${NC}"
+# Success! Display helpful & relevant information for the developer if needed
+echo_green "Setup complete!"
+echo_green "  - Note: Pre-Commit will now manage Git hooks."
