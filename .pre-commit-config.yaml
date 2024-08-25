@@ -41,3 +41,11 @@ repos:
       # Detects changed symlinks that now point to regular files
     - id: forbid-submodules
       # Forbids Git submodules
+
+- repo: local
+  hooks:
+    - id: run-super-linter
+      name: Run Super Linter
+      entry: ./scripts/tools/super-linter.sh
+      language: system
+      stages: [commit]

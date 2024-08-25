@@ -1,11 +1,11 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 # super-linter.sh: Script to run the super-linter locally on the entire codebase.
 #
 # Note: Despite Yaml prettier, bashfmt, and other mentioned prettifier tools. They are used only for linting purposes. As its name indicates, Super-Linter focuses on linting only. Formatting is intentionally supposed to be a separate sctivity.
 
 # Directories to simplify making script runnable from anywhere
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-PROJECT_ROOT=$(cd "${SCRIPT_DIR}/.." && pwd)
+PROJECT_ROOT=$(cd "${SCRIPT_DIR}/../.." && pwd)
 
 # Source the common functions and constants
 source "${SCRIPT_DIR}/../.common.sh"
