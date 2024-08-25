@@ -3,49 +3,51 @@
 # Pre-Commit hooks are scripts that run automatically before each commit to ensure code quality and check for errors.
 # This setup helps enforce coding standards and prevent common issues in code and other tracked files.
 
+---
+
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
-  hooks:
-    # Syntax validation hooks
-    - id: check-json
-      # Checks JSON files for syntax errors
-    - id: check-xml
-      # Checks XML files for syntax errors
-    - id: check-yaml
-      args: [--allow-multiple-documents]
-      # Checks YAML files for syntax errors, allowing multiple documents per file
-    - id: check-toml
-      # Checks TOML files for syntax errors
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      # Syntax validation hooks
+      - id: check-json
+        # Checks JSON files for syntax errors
+      - id: check-xml
+        # Checks XML files for syntax errors
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+        # Checks YAML files for syntax errors, allowing multiple documents per file
+      - id: check-toml
+        # Checks TOML files for syntax errors
 
-    # Whitespace and file content hooks
-    - id: trailing-whitespace
-      # Removes trailing whitespace
-      files: ^(automation|ci|code-scanning|deployments|pages)/.*\.(yaml|yml|json)$
-      # TODO: Confirm regex matches intended directories and file types
+      # Whitespace and file content hooks
+      - id: trailing-whitespace
+        # Removes trailing whitespace
+        files: ^(automation|ci|code-scanning|deployments|pages)/.*\.(yaml|yml|json)$
+        # TODO: Confirm regex matches intended directories and file types
 
-    # File conflict and size management hooks 
-    - id: check-added-large-files
-      # Prevents giant files from being committed
-    - id: check-case-conflict
-      # Check for files with names that would conflict on a case-insensitive filesystem
-    - id: check-merge-conflict
-      # Check for files that contain merge conflict strings
+      # File conflict and size management hooks
+      - id: check-added-large-files
+        # Prevents giant files from being committed
+      - id: check-case-conflict
+        # Check for files with names that would conflict on a case-insensitive filesystem
+      - id: check-merge-conflict
+        # Check for files that contain merge conflict strings
 
-    # System integrity and configuration hooks
-    - id: check-executables-have-shebangs
-      # Ensures non-binary executables have a proper shebang
-    - id: check-symlinks
-      # Checks for symlinks which do not point to anything
-    - id: destroyed-symlinks
-      # Detects changed symlinks that now point to regular files
-    - id: forbid-submodules
-      # Forbids Git submodules
+      # System integrity and configuration hooks
+      - id: check-executables-have-shebangs
+        # Ensures non-binary executables have a proper shebang
+      - id: check-symlinks
+        # Checks for symlinks which do not point to anything
+      - id: destroyed-symlinks
+        # Detects changed symlinks that now point to regular files
+      - id: forbid-submodules
+        # Forbids Git submodules
 
-- repo: local
-  hooks:
-    - id: run-super-linter
-      name: Run Super Linter
-      entry: ./scripts/tools/super-linter.sh
-      language: system
-      stages: [commit]
+  - repo: local
+    hooks:
+      - id: run-super-linter
+        name: Run Super Linter
+        entry: ./scripts/tools/super-linter.sh
+        language: system
+        stages: [commit]

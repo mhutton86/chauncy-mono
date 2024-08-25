@@ -13,7 +13,7 @@ echo_yellow "Running shfmt using Docker..."
 docker run \
   --rm -u "$(id -u):$(id -g)" \
   -v "${PROJECT_ROOT}:/mnt" -w /mnt \
-  mvdan/shfmt:v3-alpine -i 2 -ci -w /mnt
+  mvdan/shfmt:v3-alpine -w /mnt
 
 # Check whether shfmt succeeded.
 if [ $? -ne 0 ]; then

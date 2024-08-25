@@ -14,8 +14,17 @@ echo_yellow "Running super-linter using Docker..."
 
 # Run super-linter as a Docker container
 docker run \
+  --rm \
   -e RUN_LOCAL=true \
+  -e DEFAULT_WORKSPACE=/tmp/lint \
   -e DEFAULT_BRANCH=main \
+  -e FIX_SHELL_SHFMT=true \
+  -e FIX_JSON_PRETTIER=true \
+  -e FIX_GOOGLE_JAVA_FORMAT=true \
+  -e FIX_MARKDOWN_PRETTIER=true \
+  -e FIX_POWERSHELL=true \
+  -e FIX_YAML_PRETTIER=true \
+  -e FIX_MARKDOWN_PRETTIER=true \
   -v "${PROJECT_ROOT}:/tmp/lint" \
   ghcr.io/super-linter/super-linter:v7
 
