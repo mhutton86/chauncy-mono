@@ -5,9 +5,9 @@ The Chauncy mono is a monorepo made to satiate my technical curiosity and optimi
 <!-- Badges -->
 [![Super-Linter](https://github.com/mhutton86/chauncy-mono/actions/workflows/ci.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
-# TODOs
+## TODOs
 
-This section captures todos as to avoid missing clean, and well-written, code practices as they come to mind. Then intention is not that these are merged into main, but instead to help pipeline checks remind me if I have any TODOs that haven't addressed.
+This section captures todos as to avoid missing clean, and well-written, code practices as they come to mind. Then intention is not that these are merged into main, but instead to help pipeline checks remind me if I have any todos that haven't addressed.
 
 * Add basic workflow to work on this project for the first-time versus every-day tasks
 * Add documentation for `./setup.sh`
