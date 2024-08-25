@@ -19,15 +19,19 @@ echo -e "${GREEN}Starting setup of development dependencies...${NC}"
 echo -e "${YELLOW}Updating system packages...${NC}"
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-# Install Pre-Commit framework
+# Pre-Commit framework
+## Install the framework
 echo -e "${YELLOW}Installing Pre-Commit framework...${NC}"
 sudo apt-get install -y pre-commit
 
-# Check Pre-Commit installation
+## Check if installation took
 if ! command -v pre-commit &> /dev/null; then
     echo -e "${RED}Pre-Commit installation failed.${NC}"
     exit 1
 fi
+
+## Install Pre-Commit hooks
+pre-commit install
 
 # Optional: Display next steps or information about configuration
 echo -e "${GREEN}Setup complete. You can now use Pre-Commit for managing Git hooks.${NC}"
