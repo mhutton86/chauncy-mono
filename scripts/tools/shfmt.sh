@@ -10,13 +10,14 @@ source "${SCRIPT_DIR}/../.common.sh"
 
 echo_yellow "Running shfmt using Docker..."
 
-docker run \
-  --rm -u "$(id -u):$(id -g)" \
-  -v "${PROJECT_ROOT}:/mnt" -w /mnt \
-  mvdan/shfmt:v3-alpine -w /mnt
+# Run shfmt using Docker
+if ! docker run \
+  --rm \
+  -u "$(id -u):$(id -g)" \
+  -v "${PROJECT_ROOT}:/mnt" \
+  -w /mnt \
+  mvdan/shfmt:v3-alpine -w /mnt; then
 
-# Check whether shfmt succeeded.
-if [ $? -ne 0 ]; then
   echo_red "shfmt reported errors."
   exit 1
 fi

@@ -4,7 +4,6 @@
 # This setup helps enforce coding standards and prevent common issues in code and other tracked files.
 
 ---
-
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0

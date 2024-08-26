@@ -22,9 +22,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 # Pre-Commit framework
 ## Install the framework
 echo_yellow "Installing Pre-Commit framework..."
-sudo apt-get install -y \
-  pre-commit \  # Pre-Commit framework
-shfmt           # shfmt: shell formatting
+sudo apt-get install -y pre-commit
 
 ## Check if installation took
 if ! command -v pre-commit &>/dev/null; then

@@ -10,7 +10,7 @@ source "${SCRIPT_DIR}/.common.sh"
 # Run pre-commit linting
 # Note: Update .pre-commit-config.yaml for additional linting needs to retain a one-stop shop
 echo_yellow "Running pre-commit checks..."
-if pre-commit run --all-files --show-diff-on-failure --color always; then
+if pre-commit run --all-files --color always; then
   echo_green "Pre-commit completed successfully."
 else
   echo_red "Pre-commit reported errors."
