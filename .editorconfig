@@ -3,17 +3,9 @@ root = true
 
 # Shell formatting. Utilized by IDEs and shfmt tool
 [*.sh]
-# like -i=4
-indent_style = space
-indent_size = 2
-
 # shfmt-specific options
 ## This fixes an issue with bash scripts being parsed as POSIX scripts
 shell_variant      = bash # like -ln=bash
-
-
-[*.{yml,yaml}]
-indent_size = 4
 
 [*.md]
 trim_trailing_whitespace = false

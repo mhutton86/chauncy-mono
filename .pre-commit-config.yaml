@@ -9,44 +9,44 @@ repos:
     rev: v4.4.0
     hooks:
       # Syntax validation hooks
+      ## Checks JSON files for syntax errors
       - id: check-json
-        # Checks JSON files for syntax errors
+      ## Checks XML files for syntax errors
       - id: check-xml
-        # Checks XML files for syntax errors
+      ## Checks YAML files for syntax errors, allowing multiple documents per file
       - id: check-yaml
         args: [--allow-multiple-documents]
-        # Checks YAML files for syntax errors, allowing multiple documents per file
+      ## Checks TOML files for syntax errors
       - id: check-toml
-        # Checks TOML files for syntax errors
 
       # Whitespace and file content hooks
+      ## Removes trailing whitespace
       - id: trailing-whitespace
-        # Removes trailing whitespace
-        files: ^(automation|ci|code-scanning|deployments|pages)/.*\.(yaml|yml|json)$
         # TODO: Confirm regex matches intended directories and file types
+        files: ^(automation|ci|code-scanning|deployments|pages)/.*\.(yaml|yml|json)$
 
       # File conflict and size management hooks
+      ## Prevents giant files from being committed
       - id: check-added-large-files
-        # Prevents giant files from being committed
+      ## Check for files with names that would conflict on a case-insensitive filesystem
       - id: check-case-conflict
-        # Check for files with names that would conflict on a case-insensitive filesystem
+      ## Check for files that contain merge conflict strings
       - id: check-merge-conflict
-        # Check for files that contain merge conflict strings
 
       # System integrity and configuration hooks
+      ## Ensures non-binary executables have a proper shebang
       - id: check-executables-have-shebangs
-        # Ensures non-binary executables have a proper shebang
+      ## Checks for symlinks which do not point to anything
       - id: check-symlinks
-        # Checks for symlinks which do not point to anything
+      ## Detects changed symlinks that now point to regular files
       - id: destroyed-symlinks
-        # Detects changed symlinks that now point to regular files
+      ## Forbids Git submodules
       - id: forbid-submodules
-        # Forbids Git submodules
 
   - repo: local
     hooks:
       - id: run-super-linter
-        name: Run Super Linter
+        name: super-Linter checks
         entry: ./scripts/tools/super-linter.sh
         language: system
         stages: [commit]
