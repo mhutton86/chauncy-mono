@@ -27,7 +27,7 @@ jobs:
           python-version: 3.11
 
       - name: Install pre-commit
-        run: ./scripts/setup.sh
+        run: ./scripts/setup-env.sh
 
       - name: Run pre-commit
         env:
