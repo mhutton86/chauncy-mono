@@ -3,18 +3,18 @@
 #
 # Note: Despite Yaml prettier, bashfmt, and other mentioned prettifier tools. They are used only for linting purposes. As its name indicates, Super-Linter focuses on linting only. Formatting is intentionally supposed to be a separate sctivity.
 
-# Disable super-linter in GitHub Actions. It's setup to run in the GHA lint pipeline.
-if [ "$GITHUB_ACTIONS" = "true" ]; then
-  echo_yellow "Super-linter disabled in GitHub Actions..."
-  exit 0
-fi
-
 # Directories to simplify making script runnable from anywhere
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PROJECT_ROOT=$(cd "${SCRIPT_DIR}/../.." && pwd)
 
 # Source the common functions and constants
 source "${SCRIPT_DIR}/../.common.sh"
+
+# Disable super-linter in GitHub Actions. It's setup to run in the GHA lint pipeline.
+if [ "$GITHUB_ACTIONS" = "true" ]; then
+  echo_yellow "Super-linter disabled in GitHub Actions..."
+  exit 0
+fi
 
 # Run super-linter as a Docker container. Success checked upon return.
 echo_yellow "Running super-linter using Docker..."
