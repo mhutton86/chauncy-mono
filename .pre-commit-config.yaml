@@ -23,7 +23,7 @@ repos:
       ## Removes trailing whitespace
       - id: trailing-whitespace
         # TODO: Confirm regex matches intended directories and file types
-        files: ^(automation|ci|code-scanning|deployments|pages)/.*\.(yaml|yml|json)$
+        files: ^.*/.*\.(yaml|yml|json|sh|env)$
 
       # File conflict and size management hooks
       ## Prevents giant files from being committed
