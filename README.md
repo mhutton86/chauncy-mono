@@ -12,7 +12,7 @@ The Chauncy mono is a monorepo made to satiate my technical curiosity and optimi
 This section provides the general workflow of using this repository.
 
 1. [Set up developement-environment-as-code](#set-up-developement-environment-as-code)
-1. Perform code cleanup and linting
+1. [Perform code cleanup and linting](#perform-code-cleanup-and-linting)
 
 ## Workflows
 
@@ -22,18 +22,33 @@ The sections covers the available workflows. This section is organized in the or
 
 This step sets up the necessary development dependencies and tools required for the project. It ensures that your environment is configured correctly and consistently across different setups. Additionally, it sets up pre-commit hooks to automatically check for code quality issues before commits, helping maintain code standards and reducing errors.
 
-```shell
-./scripts/setup-env.shscripts/setup-env.sh
+```bash
+./scripts/setup-env.sh
+```
+
+### Perform code cleanup and linting
+
+This step runs the linter script to check and clean up code formatting and linting issues across the codebase. It uses the pre-commit framework and Super-Linter to ensure code quality.
+
+```bash
+./scripts/clean-and-lint.sh
 ```
 
 ## Configuration
 
-<!-- Todo I want to do a simple and elegant job of breaking down how this project is configured. For the purposes of it understandable, maintainable, and to encourage the expectations of keeping it up-to-date -->
+There are multiple aspects to this project's configuration:
 
-There are multiple aspects to the configuration of this project
+### DevOps
 
-DevOps
+Code quality and static analysis
 
-- Development
-- Code quality and static analysis
-- Production
+- Performed by:
+  - **Super-Linter**: A bundling of linting and formatting tools.
+  - Related configuration-as-code files:
+    - `.super-linter-format-cfg.env`: Contains settings for autofixing code formatting issues.
+    - `.super-linter-lint-cfg.env`: Contains settings for linter rules and configurations.
+    - `.yaml-lint.yml`: Contains rules for linting YAML files.
+    - `.editorconfig`: Defines coding styles for different file types.
+  - **Pre-commit framework**: Ensures code quality checks before commits.
+  - Configuration file:
+    - `.pre-commit-config.yaml`: Defines the hooks and checks to run before commits.
