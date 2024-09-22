@@ -1,0 +1,65 @@
+---
+name: Lint
+
+on:
+  push:
+
+# Default permissions. Start limited, but change access as needed for jobs.
+permissions:
+  contents: read
+  packages: read
+  statuses: read
+
+jobs:
+  pre-commit:
+    name: Pre-Commit Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install pre-commit
+        run: ./scripts/setup-env.sh
+
+      - name: Run pre-commit
+        run: scripts/clean-and-lint.sh
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    permissions:
+      # To report GitHub Actions status checks
+      statuses: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+
+      - name: Load super-linter link configuration
+        # Use grep inverse matching to exclude eventual comments in the .env file
+        # because the GitHub Actions command to set environment variables doesn't
+        # support comments.
+        # Ref: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable
+        run: grep -v '^#' .super-linter-lint-cfg.env >> "$GITHUB_ENV"
+
+      - name: Load super-linter format configuration
+        run: grep -v '^#' .super-linter-format-cfg.env >> "$GITHUB_ENV"
+
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.0.0 # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

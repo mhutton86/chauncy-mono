@@ -1,0 +1,52 @@
+# .pre-commit-config.yaml
+# This configuration file is used by the Pre-Commit framework to manage and maintain pre-commit hooks.
+# Pre-Commit hooks are scripts that run automatically before each commit to ensure code quality and check for errors.
+# This setup helps enforce coding standards and prevent common issues in code and other tracked files.
+
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      # Syntax validation hooks
+      ## Checks JSON files for syntax errors
+      - id: check-json
+      ## Checks XML files for syntax errors
+      - id: check-xml
+      ## Checks YAML files for syntax errors, allowing multiple documents per file
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      ## Checks TOML files for syntax errors
+      - id: check-toml
+
+      # Whitespace and file content hooks
+      ## Removes trailing whitespace
+      - id: trailing-whitespace
+        # TODO: Confirm regex matches intended directories and file types
+        files: ^.*/.*\.(yaml|yml|json|sh|env)$
+
+      # File conflict and size management hooks
+      ## Prevents giant files from being committed
+      - id: check-added-large-files
+      ## Check for files with names that would conflict on a case-insensitive filesystem
+      - id: check-case-conflict
+      ## Check for files that contain merge conflict strings
+      - id: check-merge-conflict
+
+      # System integrity and configuration hooks
+      ## Ensures non-binary executables have a proper shebang
+      - id: check-executables-have-shebangs
+      ## Checks for symlinks which do not point to anything
+      - id: check-symlinks
+      ## Detects changed symlinks that now point to regular files
+      - id: destroyed-symlinks
+      ## Forbids Git submodules
+      - id: forbid-submodules
+
+  - repo: local
+    hooks:
+      - id: run-super-linter
+        name: super-Linter checks
+        entry: ./scripts/tools/super-linter.sh
+        language: system
+        stages: [commit]
