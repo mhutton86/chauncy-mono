@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "fwcd.kotlin",
+    "richardwillis.vscode-gradle",
+    "github.vscode-github-actions",
+    "vmware.vscode-spring-boot",
+    "vmware.vscode-boot-dev-pack",
+    "vscjava.vscode-java-pack"
+  ]
+}
