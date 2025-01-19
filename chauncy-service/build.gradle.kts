@@ -46,7 +46,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
     // External Libraries
-    implementation("io.github.sashirestela:simple-openai:3.8.2")
+    implementation("io.github.sashirestela:simple-openai:3.14.0")
 
     // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")

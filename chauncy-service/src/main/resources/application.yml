@@ -2,9 +2,6 @@
 spring:
   application:
     name: Chauncy Service
-
-ai:
-  query:
-    service:
-      url: "https://example.com/api"
-      token: "<NONE>"
+# openai:
+#   api:
+#     token: "<NONE>"
