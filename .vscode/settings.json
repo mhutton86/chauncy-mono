@@ -8,10 +8,5 @@
     }
   ],
   "kotlin.compiler.jvm.target": "21",
-  "editor.detectIndentation": false,
-  "spring.initializr.defaultLanguage": "Kotlin",
-  "[kotlin]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "fwcd.kotlin"
-  }
+  "spring.initializr.defaultLanguage": "Kotlin"
 }

@@ -7,22 +7,22 @@ import org.springframework.web.client.RestTemplate
 
 @Service
 class AiQueryService(
-        @Value("\${ai.query.service.url}") private val serviceUrl: String,
-        @Value("\${ai.query.service.token}") private val apiToken: String
+    @Value("\${ai.query.service.url}") private val serviceUrl: String,
+    @Value("\${ai.query.service.token}") private val apiToken: String,
 ) {
-  private val logger = LoggerFactory.getLogger(AiQueryService::class.java)
-  private val restTemplate = RestTemplate()
+    private val logger = LoggerFactory.getLogger(AiQueryService::class.java)
+    private val restTemplate = RestTemplate()
 
-  init {
-    logger.info("AiQueryService started with serviceUrl: $serviceUrl")
-  }
+    init {
+        logger.info("AiQueryService started with serviceUrl: $serviceUrl")
+    }
 
-  fun query(input: String): String {
-    val response =
+    fun query(input: String): String {
+        val response =
             restTemplate.getForObject(
-                    "$serviceUrl?input=$input&token=$apiToken",
-                    String::class.java
+                "$serviceUrl?input=$input&token=$apiToken",
+                String::class.java,
             )
-    return response ?: "Query result for: $input"
-  }
+        return response ?: "Query result for: $input"
+    }
 }
