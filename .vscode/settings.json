@@ -1,4 +1,17 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "java.compile.nullAnalysis.mode": "automatic"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-21",
+      "path": "/usr/lib/jvm/java-21-openjdk-amd64"
+    }
+  ],
+  "kotlin.compiler.jvm.target": "21",
+  "editor.detectIndentation": false,
+  "spring.initializr.defaultLanguage": "Kotlin",
+  "[kotlin]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "fwcd.kotlin"
+  }
 }
