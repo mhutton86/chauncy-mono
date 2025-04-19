@@ -19,7 +19,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.{kt,kts}]
-indent_size = 4
+indent_size = 2
 
 # Uncomment and update for directories to ignore
 # # Ignore the entire "third_party" directory.

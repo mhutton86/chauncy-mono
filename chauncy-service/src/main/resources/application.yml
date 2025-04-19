@@ -1,7 +1,36 @@
 ---
 spring:
+  # main:
+  #   log-startup-info: true
+  profiles:
+    active: dev
   application:
     name: Chauncy Service
-# openai:
-#   api:
-#     token: "<NONE>"
+
+openai:
+  api: token
+
+gmail:
+  api:
+    client-id: <YOUR_GMAIL_CLIENT_ID>
+    client-secret: <YOUR_GMAIL_CLIENT_SECRET>
+    refresh-token: <YOUR_GMAIL_REFRESH_TOKEN>
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  application:
+    name: Chauncy Service (Dev)
+logging:
+  level:
+    root: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  application:
+    name: Chauncy Service (Prod)

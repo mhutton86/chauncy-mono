@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Spring Boot App",
+      "type": "shell",
+      "command": "./gradlew clean build --no-daemon --info",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Spring Boot App (Terminal)",
+      "type": "shell",
+      "command": "./gradlew bootRun",
+      "problemMatcher": []
+    }
+  ]
+}

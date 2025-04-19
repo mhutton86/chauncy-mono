@@ -6,5 +6,5 @@ import org.springframework.boot.runApplication
 @SpringBootApplication class ChauncyApplication
 
 fun main(args: Array<String>) {
-    runApplication<ChauncyApplication>(*args)
+  runApplication<ChauncyApplication>(*args)
 }
