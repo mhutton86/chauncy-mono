@@ -52,3 +52,7 @@ Code quality and static analysis
   - **Pre-commit framework**: Ensures code quality checks before commits.
   - Configuration file:
     - `.pre-commit-config.yaml`: Defines the hooks and checks to run before commits.
+    
+## References
+
+- [Gmail API Java Quickstart](https://developers.google.com/workspace/gmail/api/quickstart/java)

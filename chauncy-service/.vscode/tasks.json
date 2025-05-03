@@ -4,7 +4,17 @@
     {
       "label": "Build Spring Boot App",
       "type": "shell",
-      "command": "./gradlew clean build --no-daemon --info",
+      "command": "./gradlew clean build --no-daemon --info --refresh-dependencies",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Refresh Gradle Dependencies",
+      "type": "shell",
+      "command": "./gradlew clean build --no-daemon --info --refresh-dependencies",
       "group": {
         "kind": "build",
         "isDefault": true

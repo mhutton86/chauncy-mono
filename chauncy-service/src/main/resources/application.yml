@@ -5,16 +5,19 @@ spring:
   profiles:
     active: dev
   application:
-    name: Chauncy Service
+    name: Chauncy
+  logging:
+    level:
+      com.mediokr.chauncy: INFO
 
 openai:
   api: token
 
 gmail:
   api:
-    client-id: <YOUR_GMAIL_CLIENT_ID>
-    client-secret: <YOUR_GMAIL_CLIENT_SECRET>
-    refresh-token: <YOUR_GMAIL_REFRESH_TOKEN>
+    client-id: token
+    client-secret: token
+    refresh-token: token
 
 ---
 spring:
@@ -22,10 +25,10 @@ spring:
     activate:
       on-profile: dev
   application:
-    name: Chauncy Service (Dev)
-logging:
-  level:
-    root: DEBUG
+    name: Chauncy (Dev)
+  logging:
+    level:
+      com.mediokr.chauncy: DEBUG
 
 ---
 spring:
@@ -33,4 +36,4 @@ spring:
     activate:
       on-profile: prod
   application:
-    name: Chauncy Service (Prod)
+    name: Chauncy (Prod)
